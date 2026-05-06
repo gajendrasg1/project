@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Question Paper Creator</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI';
+            background: #eef2f7;
+            margin: 0;
+        }
+
+        .container {
+            width: 75%;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .section {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .easy { border-left: 8px solid #28a745; }
+        .medium { border-left: 8px solid #ffc107; }
+        .hard { border-left: 8px solid #dc3545; }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📘 Smart Question Paper Creator</h1>
+    <div class="title">Generate structured question papers instantly</div>
+
+    <form method="POST">
+        <textarea name="topic" placeholder="Enter topic (e.g., Artificial Intelligence, DBMS, etc.)"></textarea>
+        <br>
+        <button type="submit">Generate Question Paper</button>
+    </form>
+
+    {% if easy %}
+
+    <div class="section easy">
+        <h2>🟢 Section A – Easy (2 Marks)</h2>
+        <ol>
+            {% for q in easy %}
+                <li>{{ q }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div class="section medium">
+        <h2>🟡 Section B – Medium (5 Marks)</h2>
+        <ol>
+            {% for q in medium %}
+                <li>{{ q }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div class="section hard">
+        <h2>🔴 Section C – Hard (10 Marks)</h2>
+        <ol>
+            {% for q in hard %}
+                <li>{{ q }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
